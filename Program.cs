@@ -47,10 +47,10 @@ namespace RatingScore
                     }
                     Console.ReadLine();
                 }
-                catch { Console.WriteLine("Enter right score"); }
+                catch { Console.WriteLine("Enter right score of discipline!"); }
             }
             catch { Console.WriteLine("Enter right semester"); }
-
+                
 
         }
     }
