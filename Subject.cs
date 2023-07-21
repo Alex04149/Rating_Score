@@ -6,13 +6,31 @@ namespace RatingScore
 {
     public class Subject
     {
-
+        public const double maxAssessmentOfDiscipline = 90.0;
+        public const int minAssessmentOfRating = 0;
+        public const int maxAssessmentOfRating = 100;
         public string name;
         public int Coefficient;
+        private int
+        public int? Score
+        {
+            get { return score; }
+            set
+            {
+                if (Score >= 0 && Score <= 100)
+                    score = value;
+                else
+                {
+                    Console.WriteLine("Error!");
+                    score = int.MaxValue;
+                }
+            }
+
+        }
         public static List<Subject> getSubject(int semester)
         {
             List<Subject> subject = new List<Subject>();
-            subject.Add(new Subject());
+         
             switch (semester)
             {
                 case 1:
@@ -84,21 +102,6 @@ namespace RatingScore
             }
             return subject;
         }
-        private int score;
-        public int Score
-        {
-            get { return score; }
-            set
-            {
-                if (Score >= 0 && Score <= 100)
-                    score = value;
-                else
-                {
-                    Console.WriteLine("Error!");
-                    score = int.MaxValue;
-                }
-            }
-
-        }
+     
     }
 }
