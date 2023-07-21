@@ -11,8 +11,8 @@ namespace RatingScore
         public const int maxAssessmentOfRating = 100;
         public string name;
         public int Coefficient;
-        private int
-        public int? Score
+        private int score;
+        public int Score
         {
             get { return score; }
             set

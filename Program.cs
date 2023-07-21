@@ -10,7 +10,7 @@ namespace RatingScore
             int semester;
             int sumScoreAndCoefficient = 0;
             int sumCoefficient = 0;
-            double rating=90.0;
+            double rating;
             int boot = 1;
             while (boot==1)
             {
@@ -52,7 +52,7 @@ namespace RatingScore
                 catch { 
                     Console.WriteLine("Enter right semester");
                 }
-                Console.Clear();
+               
                 Console.WriteLine("Reboot(1)");
                 boot = int.Parse(Console.ReadLine());
                 Console.Clear();
