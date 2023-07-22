@@ -1,16 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
-
-
 namespace RatingScore
 {
     public class Subject
     {
-        public const double maxAssessmentOfDiscipline = 90.0;
-        public const int minAssessmentOfRating = 0;
-        public const int maxAssessmentOfRating = 100;
-        public string name;
-        public int Coefficient;
+
+        private string Name;
+
+        public string name
+        {
+            get { return name; }
+            set { name = value; }
+        }
+
+        private int Coefficient;
+
+        public int coefficient
+        {
+            get { return Coefficient; }
+            set { Coefficient = value; }
+        }
+
         private int score;
         public int Score
         {
@@ -30,13 +40,15 @@ namespace RatingScore
         public static List<Subject> getSubject(int semester)
         {
             List<Subject> subject = new List<Subject>();
-         
+            subject.Add(new Subject());
             switch (semester)
             {
                 case 1:
                     subject.AddRange(new Subject[8]);
                     for (int i = 0; i < subject.Count; i++)
-                    { subject[i] = new Subject(); }
+                    {
+                        subject[i] = new Subject();
+                    }
                     subject[0].name = "Math";
                     subject[0].Coefficient = 6;
                     subject[1].name = "Physics";
@@ -57,7 +69,9 @@ namespace RatingScore
                 case 2:
                     subject.AddRange(new Subject[8]);
                     for (int i = 0; i < subject.Count; i++)
-                    { subject[i] = new Subject(); }
+                    { 
+                        subject[i] = new Subject(); 
+                    }
                     subject[0].name = "Math";
                     subject[0].Coefficient = 6;
                     subject[1].name = "Physics";
@@ -78,7 +92,9 @@ namespace RatingScore
                 case 3:
                     subject.AddRange(new Subject[8]);
                     for (int i = 0; i < subject.Count; i++)
-                    { subject[i] = new Subject(); }
+                    { 
+                        subject[i] = new Subject();
+                    }
                     subject[0].name = "Math";
                     subject[0].Coefficient = 6;
                     subject[1].name = "Electrical engineering and electromechanics";

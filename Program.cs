@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-
 namespace RatingScore
 {
     internal class Program
@@ -12,7 +11,7 @@ namespace RatingScore
             int sumCoefficient = 0;
             double rating;
             int boot = 1;
-            while (boot==1)
+            while (boot == 1)
             {
                 try
                 {
@@ -25,16 +24,13 @@ namespace RatingScore
                         {
                             Console.WriteLine("Enter score by " + subjects[i].name);
                             subjects[i].Score = int.Parse(Console.ReadLine());
+                            int ScoreAndCoefficient;
+                            ScoreAndCoefficient = subjects[i].Score * subjects[i].coefficient;
+                            sumScoreAndCoefficient += ScoreAndCoefficient;
+                            sumCoefficient += subjects[i].coefficient;
                         }
-                        for (int i = 0; i < subjects.Count; i++)
-                        {
-                            int temp;
-                            temp = subjects[i].Score * subjects[i].Coefficient;
-                            sumScoreAndCoefficient += temp;
-                            sumCoefficient += subjects[i].Coefficient;
-                        }
-                        rating = (Subject.maxAssessmentOfDiscipline * sumScoreAndCoefficient) / (sumCoefficient * Subject.maxAssessmentOfRating);
-                        if (rating > Subject.minAssessmentOfRating && rating < Subject.maxAssessmentOfRating)
+                        rating = (Constants.maxAssessmentOfDiscipline * sumScoreAndCoefficient) / (sumCoefficient * Constants.maxAssessmentOfRating);
+                        if (rating > Constants.minAssessmentOfRating && rating < Constants.maxAssessmentOfRating)
                         {
                             Console.WriteLine("Your rating score = " + rating);
                             
@@ -45,18 +41,19 @@ namespace RatingScore
                         }
                        
                     }
-                    catch {
+                    catch 
+                    {
                         Console.WriteLine("Enter right score of discipline!");
                     }
                 }
-                catch { 
+                catch 
+                { 
                     Console.WriteLine("Enter right semester");
-                }
-               
+                }               
                 Console.WriteLine("Reboot(1)");
                 boot = int.Parse(Console.ReadLine());
                 Console.Clear();
-            }      
+            }
 
         }
     }
