@@ -32,14 +32,12 @@ namespace RatingScore
                         rating = (Constants.maxAssessmentOfDiscipline * sumScoreAndCoefficient) / (sumCoefficient * Constants.maxAssessmentOfRating);
                         if (rating > Constants.minAssessmentOfRating && rating < Constants.maxAssessmentOfRating)
                         {
-                            Console.WriteLine("Your rating score = " + rating);
-                            
+                            Console.WriteLine("Your rating score = " + rating);                            
                         }
                         else
                         {
                             Console.WriteLine("ERROR!");
-                        }
-                       
+                        }                       
                     }
                     catch 
                     {

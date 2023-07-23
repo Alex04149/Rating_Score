@@ -9,8 +9,8 @@ namespace RatingScore
 
         public string name
         {
-            get { return name; }
-            set { name = value; }
+            get { return Name; }
+            set { Name = value; }
         }
 
         private int Coefficient;
@@ -27,7 +27,7 @@ namespace RatingScore
             get { return score; }
             set
             {
-                if (Score >= 0 && Score <= 100)
+                if (value >= 0 && value <= 100)
                     score = value;
                 else
                 {
@@ -40,7 +40,6 @@ namespace RatingScore
         public static List<Subject> getSubject(int semester)
         {
             List<Subject> subject = new List<Subject>();
-            subject.Add(new Subject());
             switch (semester)
             {
                 case 1:
