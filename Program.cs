@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+
 namespace RatingScore
 {
     internal class Program
@@ -9,25 +9,24 @@ namespace RatingScore
             int semester;
             int sumScoreAndCoefficient = 0;
             int sumCoefficient = 0;
+            int ScoreAndCoefficient;
             double rating;
-            int boot = 1;
-            while (boot == 1)
-            {
-                try
-                {
-                    Console.WriteLine("Enter your semester");
-                    semester = int.Parse(Console.ReadLine());
-                    List<Subject> subjects = Subject.getSubject(semester);
+            int bootProgram = 1;
+
+            while (bootProgram == 1)
+            {       
+                Console.WriteLine("Enter your semester");
+                semester  = int.Parse(Console.ReadLine());
+                var Subjects = Subject.getSubject(semester);
                     try
                     {
-                        for (int i = 0; i < subjects.Count; i++)
+                        for (int i = 0; i < Subjects.Count; i++)
                         {
-                            Console.WriteLine("Enter score by " + subjects[i].name);
-                            subjects[i].Score = int.Parse(Console.ReadLine());
-                            int ScoreAndCoefficient;
-                            ScoreAndCoefficient = subjects[i].Score * subjects[i].coefficient;
+                            Console.WriteLine("Enter score by " + Subjects[i].Name);
+                            Subjects[i].Score = int.Parse(Console.ReadLine());
+                            ScoreAndCoefficient = Subjects[i].Score * Subjects[i].Coefficient;
                             sumScoreAndCoefficient += ScoreAndCoefficient;
-                            sumCoefficient += subjects[i].coefficient;
+                            sumCoefficient += Subjects[i].Coefficient;
                         }
                         rating = (Constants.maxAssessmentOfDiscipline * sumScoreAndCoefficient) / (sumCoefficient * Constants.maxAssessmentOfRating);
                         if (rating > Constants.minAssessmentOfRating && rating < Constants.maxAssessmentOfRating)
@@ -39,17 +38,12 @@ namespace RatingScore
                             Console.WriteLine("ERROR!");
                         }                       
                     }
-                    catch 
-                    {
-                        Console.WriteLine("Enter right score of discipline!");
-                    }
-                }
                 catch 
                 { 
-                    Console.WriteLine("Enter right semester");
+                    Console.WriteLine("Enter right data");
                 }               
-                Console.WriteLine("Reboot(1)");
-                boot = int.Parse(Console.ReadLine());
+                Console.WriteLine("Reboot program (1)");
+                bootProgram = int.Parse(Console.ReadLine());
                 Console.Clear();
             }
 

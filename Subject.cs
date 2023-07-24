@@ -1,27 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
+
 namespace RatingScore
 {
     public class Subject
     {
-
-        private string Name;
-
-        public string name
-        {
-            get { return Name; }
-            set { Name = value; }
-        }
-
-        private int Coefficient;
-
-        public int coefficient
-        {
-            get { return Coefficient; }
-            set { Coefficient = value; }
-        }
-
+        private string name;
+        private int coefficient;
         private int score;
+        public string Name
+        {
+            get { return name; }
+            set { name = value; }
+        }
+        public int Coefficient
+        {
+            get { return coefficient; }
+            set { coefficient = value; }
+        }      
         public int Score
         {
             get { return score; }
@@ -31,8 +27,13 @@ namespace RatingScore
                     score = value;
                 else
                 {
-                    Console.WriteLine("Error!");
-                    score = int.MaxValue;
+                    
+                    while (value < 0 || value > 100)
+                    {
+                        Console.WriteLine("Enter right score");
+                        value = int.Parse(Console.ReadLine());
+                        score = value;
+                    }
                 }
             }
 
@@ -115,6 +116,7 @@ namespace RatingScore
                 default:
                     break;
             }
+
             return subject;
         }
      
