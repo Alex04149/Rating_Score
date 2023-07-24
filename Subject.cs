@@ -25,13 +25,17 @@ namespace RatingScore
             {
                 return coefficient;
             }
-            set {
+            set
+            {
                 coefficient = value;
             }
         }      
         public int Score
         {
-            get { return score; }
+            get
+            {
+                return score;
+            }
             set
             {
                 if (value >= 0 && value <= 100)
