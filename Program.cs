@@ -12,6 +12,7 @@ namespace RatingScore
             int ScoreAndCoefficient;
             double rating;
             int bootProgram = 1;
+            int additionalPoints;
 
             while (bootProgram == 1)
             {       
@@ -28,15 +29,10 @@ namespace RatingScore
                             sumScoreAndCoefficient += ScoreAndCoefficient;
                             sumCoefficient += Subjects[i].Coefficient;
                         }
-                        rating = (Constants.maxAssessmentOfDiscipline * sumScoreAndCoefficient) / (sumCoefficient * Constants.maxAssessmentOfRating);
-                        if (rating > Constants.minAssessmentOfRating && rating < Constants.maxAssessmentOfRating)
-                        {
-                            Console.WriteLine("Your rating score = " + rating);                            
-                        }
-                        else
-                        {
-                            Console.WriteLine("ERROR!");
-                        }                       
+                    Console.WriteLine("Enter your additional points");
+                    additionalPoints=int.Parse(Console.ReadLine()); 
+                    rating = ((Constants.maxAssessmentOfDiscipline * sumScoreAndCoefficient) / (sumCoefficient * Constants.maxAssessmentOfRating)) + additionalPoints;
+                    Console.WriteLine("Your rating score = " + rating);                                           
                     }
                 catch 
                 { 

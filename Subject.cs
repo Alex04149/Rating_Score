@@ -10,13 +10,24 @@ namespace RatingScore
         private int score;
         public string Name
         {
-            get { return name; }
-            set { name = value; }
+            get 
+            {
+                return name;
+            }
+            set 
+            {
+                name = value; 
+            }
         }
         public int Coefficient
         {
-            get { return coefficient; }
-            set { coefficient = value; }
+            get 
+            {
+                return coefficient;
+            }
+            set {
+                coefficient = value;
+            }
         }      
         public int Score
         {
@@ -26,8 +37,7 @@ namespace RatingScore
                 if (value >= 0 && value <= 100)
                     score = value;
                 else
-                {
-                    
+                {                    
                     while (value < 0 || value > 100)
                     {
                         Console.WriteLine("Enter right score");
@@ -38,6 +48,7 @@ namespace RatingScore
             }
 
         }
+
         public static List<Subject> getSubject(int semester)
         {
             List<Subject> subject = new List<Subject>();
@@ -66,6 +77,7 @@ namespace RatingScore
                     subject[7].name = "PE";
                     subject[7].Coefficient = 2;
                     break;
+
                 case 2:
                     subject.AddRange(new Subject[8]);
                     for (int i = 0; i < subject.Count; i++)
@@ -89,6 +101,7 @@ namespace RatingScore
                     subject[7].name = "PE";
                     subject[7].Coefficient = 2;
                     break;
+
                 case 3:
                     subject.AddRange(new Subject[8]);
                     for (int i = 0; i < subject.Count; i++)
@@ -118,7 +131,6 @@ namespace RatingScore
             }
 
             return subject;
-        }
-     
+        }     
     }
 }
