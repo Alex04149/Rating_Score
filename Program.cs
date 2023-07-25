@@ -13,24 +13,24 @@ namespace RatingScore
             double rating;
             int bootProgram = 1;
             int additionalPoints;
-            char l;
+            char language;
 
             while (bootProgram == 1)
             {
                 do
                 {
                     Console.WriteLine("Виберiть мову спiлкування English(e), укр(u)");
-                    l = char.Parse(Console.ReadLine());
+                    language = char.Parse(Console.ReadLine());
                 }
-                while (l != 'e' && l != 'u');
+                while (language != 'e' && language != 'u');
                 LanguageMessage message = new LanguageMessage();
-                message.setMessage(l);
+                message.setLanguageMessage(language);
                 Console.WriteLine(message.enterSemester);
                 semester = int.Parse(Console.ReadLine());
-                var Subjects = Subject.getSubject(semester,l);
+                var Subjects = Subject.getSubject(semester,language);
                 try
                 { 
-                   for (int i = 0; i < Subjects.Count; i++)
+                   for (int i = 0; i < Subjects.Count; i++) 
                    {
                       Console.WriteLine(message.enterScore+Subjects[i].Name) ;
                       Subjects[i].Score = int.Parse(Console.ReadLine());
@@ -39,9 +39,11 @@ namespace RatingScore
                       sumCoefficient += Subjects[i].Coefficient;
                    }
                    Console.WriteLine(message.enterAdditionalPoints);
-                   additionalPoints=int.Parse(Console.ReadLine()); 
-                   rating = ((Constants.maxAssessmentOfDiscipline * sumScoreAndCoefficient) 
-                        / (sumCoefficient * Constants.maxAssessmentOfRating)) + additionalPoints;
+                   additionalPoints = int.Parse(Console.ReadLine());
+                    double numeral = (Constants.maxAssessmentOfDiscipline * sumScoreAndCoefficient);
+                    double denominator = (sumCoefficient * Constants.maxAssessmentOfRating);
+                   rating = (numeral
+                        /denominator + additionalPoints);
                     Console.WriteLine(message.rating + rating);
                 }
                 catch 

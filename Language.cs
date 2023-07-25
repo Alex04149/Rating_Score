@@ -10,24 +10,26 @@ namespace RatingScore
         public string error;
         public string rating;
         public string reboot;
-        public void setMessage(char l)
+
+        public void setLanguageMessage(char l)
         {
             switch (l)
             {
                 case 'e':
                     enterSemester = "Enter semester";
                     enterScore = "Enter score by ";
-                    enterAdditionalPoints = "Enter additional points ";
+                    enterAdditionalPoints = "Enter additional points";
                     error = "Enter right data";
                     rating = "Your rating score ";
                     reboot = "Reboot program (1)";
                     break;
+
                 case 'u':
                     enterSemester = "Введiть семестер ";
                     enterScore = "Введiть оцiнку з дисциплiни ";
                     enterAdditionalPoints = "Введiть додатковi бали ";
                     error = "Введiть правильно данi";
-                    rating = "Ваш рейтинговий бал";
+                    rating = "Ваш рейтинговий бал ";
                     reboot = "Щоб перезавантажити програму натиснiть 1";
                     break;
 
@@ -46,7 +48,7 @@ namespace RatingScore
         public string history;
         public string theoryOfDigitalAutomata;
         public string ecology;
-        public string electricalEngineeringAndEelectromechanics;
+        public string electricalEngineeringAndElectromechanics;
         public string informationTechnologyAndProgramming;
         public string phylosophy;
         public string appliedMechanics;
@@ -70,8 +72,9 @@ namespace RatingScore
                     informationTechnologyAndProgramming = "Information Technology and Programming";
                     phylosophy = "phylosophy";
                     appliedMechanics = "Applied Mechanics";
-
+                    electricalEngineeringAndElectromechanics = "Electrical engineering and electromechanics";
                         break;
+
                 case 'u':
                     Math = "Вища математика";
                     Physics = "Фiзика";
@@ -87,7 +90,7 @@ namespace RatingScore
                     informationTechnologyAndProgramming = "Iнформацiйні технологі та програмування";
                     phylosophy = "Філософія";
                     appliedMechanics = "Прикладна механіка";
-
+                    electricalEngineeringAndElectromechanics = "Електротехніка та електромеханіка";
                     break;
 
             }

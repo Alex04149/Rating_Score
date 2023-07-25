@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Runtime.InteropServices.WindowsRuntime;
 
 namespace RatingScore
 {
@@ -115,7 +114,7 @@ namespace RatingScore
                     }
                     subject[0].name = nameSubject.Math;
                     subject[0].Coefficient = 6;
-                    subject[1].name = nameSubject.electricalEngineeringAndEelectromechanics;
+                    subject[1].name = nameSubject.electricalEngineeringAndElectromechanics;
                     subject[1].Coefficient = 6;
                     subject[2].name = nameSubject.Physics;
                     subject[2].Coefficient = 3;
@@ -125,7 +124,7 @@ namespace RatingScore
                     subject[4].Coefficient = 3;
                     subject[5].name = nameSubject.PE;
                     subject[5].Coefficient = 2;
-                    subject[6].name = "Applied Mechanics";
+                    subject[6].name = nameSubject.appliedMechanics;
                     subject[6].Coefficient = 2;
                     subject[7].name = nameSubject.PE;
                     subject[7].Coefficient = 2;
