@@ -13,36 +13,46 @@ namespace RatingScore
             double rating;
             int bootProgram = 1;
             int additionalPoints;
+            char l;
 
             while (bootProgram == 1)
-            {       
-                Console.WriteLine("Enter your semester");
-                semester  = int.Parse(Console.ReadLine());
-                var Subjects = Subject.getSubject(semester);
+            {
+                do
+                {
+                    Console.WriteLine("Виберiть мову спiлкування English(e), укр(u)");
+                    l = char.Parse(Console.ReadLine());
+                }
+                while (l != 'e' && l != 'u');
+                LanguageMessage message = new LanguageMessage();
+                message.setMessage(l);
+                Console.WriteLine(message.enterSemester);
+                semester = int.Parse(Console.ReadLine());
+                var Subjects = Subject.getSubject(semester,l);
                 try
                 { 
                    for (int i = 0; i < Subjects.Count; i++)
                    {
-                      Console.WriteLine("Enter score by " + Subjects[i].Name);
+                      Console.WriteLine(message.enterScore+Subjects[i].Name) ;
                       Subjects[i].Score = int.Parse(Console.ReadLine());
                       ScoreAndCoefficient = Subjects[i].Score * Subjects[i].Coefficient;
                       sumScoreAndCoefficient += ScoreAndCoefficient;
                       sumCoefficient += Subjects[i].Coefficient;
                    }
-                   Console.WriteLine("Enter your additional points");
+                   Console.WriteLine(message.enterAdditionalPoints);
                    additionalPoints=int.Parse(Console.ReadLine()); 
-                   rating = ((Constants.maxAssessmentOfDiscipline * sumScoreAndCoefficient) / (sumCoefficient * Constants.maxAssessmentOfRating)) + additionalPoints;
-                   Console.WriteLine("Your rating score = " + rating);                                           
+                   rating = ((Constants.maxAssessmentOfDiscipline * sumScoreAndCoefficient) 
+                        / (sumCoefficient * Constants.maxAssessmentOfRating)) + additionalPoints;
+                    Console.WriteLine(message.rating + rating);
                 }
                 catch 
-                { 
-                    Console.WriteLine("Enter right data");
+                {
+                    Console.WriteLine(message.error);
                 }               
-                Console.WriteLine("Reboot program (1)");
+                Console.WriteLine(message.reboot);
                 bootProgram = int.Parse(Console.ReadLine());
                 Console.Clear();
-            }
 
+            }
         }
     }
 }
