@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-
 
 namespace RatingScore
 {
@@ -8,50 +6,55 @@ namespace RatingScore
     {
         static void Main(string[] args)
         {
-
-
-            const double maxAssessmentOfDiscipline = 90.0;
-            const int minAssessmentOfRating = 0;
-            const int maxAssessmentOfRating = 100;
             int semester;
             int sumScoreAndCoefficient = 0;
             int sumCoefficient = 0;
+            int ScoreAndCoefficient;
             double rating;
-            try
+            int bootProgram = 1;
+            int additionalPoints;
+            char language;
+
+            while (bootProgram == 1)
             {
-                Console.WriteLine("Enter your semester");
-                semester = int.Parse(Console.ReadLine());
-                List<Subject> subjects = Subject.getSubject(semester);
-                try
+                do
                 {
-                    for (int i = 0; i < subjects.Count - 1; i++)
-                    {
-                        Console.WriteLine("Enter score by " + subjects[i].name);
-                        subjects[i].Score = int.Parse(Console.ReadLine());
-                    }
-                    for (int i = 0; i < subjects.Count - 1; i++)
-                    {
-                        int temp;
-                        temp = subjects[i].Score * subjects[i].Coefficient;
-                        sumScoreAndCoefficient += temp;
-                        sumCoefficient += subjects[i].Coefficient;
-                    }
-                    rating = (maxAssessmentOfDiscipline * sumScoreAndCoefficient) / (sumCoefficient * maxAssessmentOfRating);
-                    if (rating > minAssessmentOfRating && rating < maxAssessmentOfRating)
-                    {
-                        Console.WriteLine("Your rating score = " + rating);
-                    }
-                    else
-                    {
-                        Console.WriteLine("ERROR!");
-                    }
-                    Console.ReadLine();
+                    Console.WriteLine("Виберiть мову спiлкування English(e), укр(u)");
+                    language = char.Parse(Console.ReadLine());
                 }
-                catch { Console.WriteLine("Enter right score"); }
+                while (language != 'e' && language != 'u');
+                LanguageMessage message = new LanguageMessage();
+                message.setLanguageMessage(language);
+                Console.WriteLine(message.enterSemester);
+                semester = int.Parse(Console.ReadLine());
+                var Subjects = Subject.getSubject(semester,language);
+                try
+                { 
+                   for (int i = 0; i < Subjects.Count; i++) 
+                   {
+                      Console.WriteLine(message.enterScore+Subjects[i].Name) ;
+                      Subjects[i].Score = int.Parse(Console.ReadLine());
+                      ScoreAndCoefficient = Subjects[i].Score * Subjects[i].Coefficient;
+                      sumScoreAndCoefficient += ScoreAndCoefficient;
+                      sumCoefficient += Subjects[i].Coefficient;
+                   }
+                   Console.WriteLine(message.enterAdditionalPoints);
+                   additionalPoints = int.Parse(Console.ReadLine());
+                    double numeral = (Constants.maxAssessmentOfDiscipline * sumScoreAndCoefficient);
+                    double denominator = (sumCoefficient * Constants.maxAssessmentOfRating);
+                   rating = (numeral
+                        /denominator + additionalPoints);
+                    Console.WriteLine(message.rating + rating);
+                }
+                catch 
+                {
+                    Console.WriteLine(message.error);
+                }               
+                Console.WriteLine(message.reboot);
+                bootProgram = int.Parse(Console.ReadLine());
+                Console.Clear();
+
             }
-            catch { Console.WriteLine("Enter right semester"); }
-
-
         }
     }
 }
